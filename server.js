@@ -9,6 +9,7 @@ var gaisexy = JSON.parse(fs.readFileSync("./gaisexy.json","utf-8"));
 var gaiditbu = JSON.parse(fs.readFileSync("./gaiditbu.json","utf-8"));
 var gaivuto = JSON.parse(fs.readFileSync("./gaivuto.json","utf-8"));
 var vdsex = JSON.parse(fs.readFileSync("./vdsex.json","utf-8"));
+var kiss = JSON.parse(fs.readFileSync("./kiss.json","utf-8"));
 var hentai = JSON.parse(fs.readFileSync("./hentai.json","utf-8"));
 var punch = JSON.parse(fs.readFileSync("./punch.json","utf-8"));
 var cosplay = JSON.parse(fs.readFileSync("./cosplay.json","utf-8"));
@@ -84,6 +85,15 @@ app.get('/vdsex/', async function (req, res) {
    res.writeHead(200, {'Content-Type': 'application/json'});
    var response = {"data": `${ee}`,"author":`${author}`}
    console.log('/vdsex',req.ip)
+   res.end(JSON.stringify(response));
+})
+app.get('/kiss/', async function (req, res) {
+  var lenght = Number(kiss.lenght);
+  var random = await Math.floor(Math.random() * lenght) + 1
+  var ff = await kiss.data[String(random)]
+   res.writeHead(200, {'Content-Type': 'application/json'});
+   var response = {"data": `${ff}`,"author":`${author}`}
+   console.log('/kiss',req.ip)
    res.end(JSON.stringify(response));
 })
 app.get('/hentai/', async function (req, res) {
